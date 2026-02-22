@@ -60,7 +60,7 @@ GET /api
 Full URL:
 
 
-https://apk-api.abdullahcoded.site/api
+[API KEY](https://apk.vegafilms-site.workers.dev)
 
 
 ---
