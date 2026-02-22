@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fast APK Store</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f1f1f1;
+padding:20px;
+}
+
+input{
+padding:10px;
+width:250px;
+}
+
+button{
+padding:10px;
+background:green;
+color:white;
+border:none;
+}
+
+.app{
+
+background:white;
+padding:10px;
+margin-top:10px;
+display:flex;
+align-items:center;
+border-radius:8px;
+
+}
+
+.app img{
+
+width:50px;
+margin-right:10px;
+
+}
+
+.download{
+
+margin-left:auto;
+background:blue;
+color:white;
+padding:5px 10px;
+text-decoration:none;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<h2>Fast APK Store</h2>
+
+<input type="text" id="search" placeholder="Search app">
+
+<button onclick="search()">Search</button>
+
+<div id="result"></div>
+
+
+<script>
+
+async function search(){
+
+let query=document.getElementById("search").value;
+
+let api="https://apk-api.abdullahcoded.site?q="+query;
+
+let res=await fetch(api);
+
+let data=await res.json();
+
+let html="";
+
+data.datalist.list.forEach(app=>{
+
+html+=`
+
+<div class="app">
+
+<img src="${app.icon}">
+
+<div>
+
+<b>${app.name}</b><br>
+
+Version: ${app.file.vername}
+
+</div>
+
+<a class="download" href="${app.file.path}" target="_blank">
+
+Download
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("result").innerHTML=html;
+
+}
+
+</script>
+
+</body>
+</html>
